@@ -90,4 +90,25 @@ Enhanced: "Would you be so kind as to salvage my spirit?"
 Normal: "I like the chocolate."
 Enhanced: "I am fond of the confectionery known as chocolate."
 --
+Normal: "I'll slip away into the sound."
+Enhanced: "I shall disappear into the aural."
+--
+Normal: "Can you build my house with pieces?"
+Enhanced: "Would you be so industrious as to construct my domicile with blocks?"
+--
+Normal: "I am very tired."
+Enhanced: "I am completely drained of energy."
+--
+Normal: "I'll hit you so hard your arse will hit the floor in Cairo."
+Enhanced: "I shall strike you so hard that your fundament shall collide with the ground in Cairo."
+--
+Normal: "I want to go to the Moon."
+Enhance: "I wish to travel to the satellite of our planet."
+--
+Normal: "You got no money, you got no fame."
+Enhanced: "You have no wealth, you have no renown."
+--
+Normal: "True, I understand, I make you look bad in your hometown."
+Enhanced: "Veritable, I comprehend, I make you appear inferior in your native country."
+--
 Normal: `
