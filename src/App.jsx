@@ -3,14 +3,16 @@ import './App.css'
 import { enhanceText } from './services/generate-text'
 import { checkLang } from './services/check-lang'
 import Clipboard from './components/Clipboard'
+import Clear from './components/Clear'
 
 function App () {
   const [disabledBtn, setDisabledBtn] = useState(false)
+  const minTextLength = 3
 
   const handleChange = async (event) => {
     const value = event.target.value
     console.log(value)
-    const isValid = value.length >= 3
+    const isValid = value.length >= minTextLength
     if (!isValid) {
       setDisabledBtn(false)
       return
@@ -37,28 +39,38 @@ function App () {
     }
   }
 
+  const clearInput = () => {
+    document.getElementById('prompt').value = ''
+  }
+
   return (
     <div className='App'>
       <header className='py-4'>
-        <h1 className='text-3xl font-bold text-center'>Extreme text enhancer</h1>
+        <h1 className='text-5xl font-bold text-center'>Extreme text enhancer</h1>
+        <h3 className='text-lg font-bold text-center'>Beautify and enhance your text as if it had been written by someone extremely cultured.</h3>
       </header>
-
-      <textarea onInput={handleChange} id='prompt' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-yellow-100 bg-[#100f0f] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='Write some shit bro, like: "I hate the mayonnaise."' name='comment' rows='2' cols='40' />
+      <textarea onInput={handleChange} id='prompt' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='Write some shit bro, like: "I want to go to the Moon."' name='comment' rows='2' cols='40' />
 
       <textarea
-        id='result' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-yellow-100 bg-[#100f0f] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='At this snowy receptacle will emerge the embellished wording...' name='comment' rows='2' cols='40' disabled
+        id='result' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='At this shadowy receptacle will emerge the embellished wording...' name='comment' rows='2' cols='40' disabled
       />
       <div className='flex flex-row gap-2'>
         <button
           disabled={!disabledBtn}
-          onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-600 hover:bg-yellow-700 hover:text-black focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
+          onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-600 hover:bg-yellow-300 hover:text-black focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
         >Enhance my text!
         </button>
         <button
           onClick={copyText}
-          type='button' className='py-2 rounded-lg'
+          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300'
         >
           <Clipboard />
+        </button>
+        <button
+          onClick={clearInput}
+          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300'
+        >
+          <Clear />
         </button>
       </div>
     </div>
