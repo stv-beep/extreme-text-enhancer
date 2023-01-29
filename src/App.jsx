@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { enhanceText, checkLang } from './services/generate-text'
+import { enhanceText } from './services/generate-text'
+import { checkLang } from './services/check-lang'
 import Clipboard from './components/Clipboard'
 
 function App () {
