@@ -111,4 +111,19 @@ Enhanced: "You have no wealth, you have no renown."
 Normal: "True, I understand, I make you look bad in your hometown."
 Enhanced: "Veritable, I comprehend, I make you appear inferior in your native country."
 --
+Normal: "I will not die."
+Enhanced: "I shall not perish, I am waiting for you."
+--
+Normal: "Sleep deprivation causes all sorts of challenges and problems."
+Enhanced: "The lack of sleep engenders a plethora of difficulties and inconveniences."
+--
+Normal: "These ain't shit to me!"
+Enhanced: "These are not worthless items to me!"
+--
+Normal: "I don't know who to trust, no surprise."
+Enhanced: "It is my lamentable deficiency of knowledge regarding who I am able to trust, no surprise."
+--
+Normal: "Give me back what's mine!"
+Enhanced: "I am in want of my belongings!"
+--
 Normal: `
