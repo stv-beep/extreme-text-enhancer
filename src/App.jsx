@@ -43,21 +43,44 @@ function App () {
     document.getElementById('prompt').value = ''
   }
 
+  /* adaptative textarea */
+  function getScrollHeight (elm) {
+    const savedValue = elm.value
+    elm.value = ''
+    elm._baseScrollHeight = elm.scrollHeight
+    elm.value = savedValue
+  }
+
+  function onExpandableTextareaInput ({ target: elm }) {
+    if (!elm.classList.contains('autoExpand') || !elm.nodeName === 'TEXTAREA') return
+
+    const minRows = elm.getAttribute('data-min-rows') | 0
+
+    !elm._baseScrollHeight && getScrollHeight(elm)
+
+    elm.rows = minRows
+    const rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16)
+    elm.rows = minRows + rows
+  }
+  document.addEventListener('input', onExpandableTextareaInput)
+
   return (
     <div className='App'>
       <header className='py-4'>
         <h1 className='text-5xl font-bold text-center'>Extreme text enhancer</h1>
         <h3 className='text-lg font-bold text-center'>Beautify and enhance your text as if it had been written by someone extremely cultured.</h3>
       </header>
-      <textarea onInput={handleChange} id='prompt' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='Write some shit bro, like: "I want to go to the Moon."' name='comment' rows='2' cols='40' />
+      <div className='flex flex-col gap-6'>
+        <textarea onInput={handleChange} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 2xl:text-2xl xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='Write some shit bro, like: "I want to go to the Moon."' rows='2' data-min-rows='2' cols='40' autoFocus />
 
-      <textarea
-        id='result' className='flex-1 w-full px-4 py-2 text-base text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='At this shadowy receptacle will emerge the embellished wording...' name='comment' rows='2' cols='40' disabled
-      />
+        <textarea
+          id='result' className='autoExpand flex-1 w-full px-4 py-2 2xl:text-2xl xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='2' data-min-rows='2' cols='40' disabled
+        />
+      </div>
       <div className='flex flex-row gap-2'>
         <button
           disabled={!disabledBtn}
-          onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-600 hover:bg-yellow-300 hover:text-black focus:ring-yellow-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
+          onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-400 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-2xl xl:text-xl lg:text-lg md:text-md w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
         >Enhance my text!
         </button>
         <button
