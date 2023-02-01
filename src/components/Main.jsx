@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { enhanceText } from '../services/generate-text'
 import { checkLang } from '../services/check-lang'
-import Clipboard from '../assets/Clipboard'
-import Clear from '../assets/Clear'
 import LoadingIcons from 'react-loading-icons'
+import Copy from './Copy'
+import ClearInput from './ClearInput'
 
 export default function Main () {
   const [disabledBtn, setDisabledBtn] = useState(false)
@@ -15,8 +15,7 @@ export default function Main () {
 
   const handleChange = async (event) => {
     const value = event.target.value
-    setInput(event.target.value)
-    console.log(value)
+    setInput(value)
     const isValid = value.length >= minTextLength
     if (!isValid) {
       setDisabledBtn(false)
@@ -70,10 +69,17 @@ export default function Main () {
   }
   document.addEventListener('input', onExpandableTextareaInput)
 
+  /* if enter key is pressed */
+  const handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      handleClick()
+    }
+  }
+
   return (
     <div className='my-10'>
       <div className='flex flex-col gap-4'>
-        <textarea onInput={handleChange} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I want to go to the Moon."' rows='2' data-min-rows='2' cols='40' autoFocus value={input} maxLength='400' />
+        <textarea onInput={handleChange} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus value={input} maxLength='400' />
 
         <textarea
           id='result' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='5' data-min-rows='2' cols='40' disabled
@@ -95,18 +101,8 @@ export default function Main () {
             ><LoadingIcons.Bars stroke='#ffff03' fill='#000' height='35px' />
             </button>
             )}
-        <button
-          onClick={copyText} aria-label='Copy to clipboard'
-          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300' alt='Copy to clipboard'
-        >
-          <Clipboard />
-        </button>
-        <button
-          onClick={clearInput} aria-label='Clear the input'
-          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300' alt='Clear the input'
-        >
-          <Clear />
-        </button>
+        <Copy onClick={copyText} />
+        <ClearInput onClick={clearInput} />
       </div>
     </div>
   )
