@@ -126,4 +126,7 @@ Enhanced: "It is my lamentable deficiency of knowledge regarding who I am able t
 Normal: "Give me back what's mine!"
 Enhanced: "I am in want of my belongings!"
 --
+Normal: "Get that motivation to not give up, and not be a quitter."
+Enhanced: "Get that motivation to not succumb to slothfulness, and not become a reprobate."
+--
 Normal: `

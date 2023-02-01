@@ -7,9 +7,7 @@ const API_GENERATE_URL = 'https://api.cohere.ai/generate'
 cohere.init(apikey)
 
 export async function enhanceText (input, length) {
-  console.log('loading...')
-  const tokenLength = Math.floor(length / 3) + 70
-  console.log(tokenLength)
+  const tokenLength = Math.floor(length / 3) + 30 // each token is about 3 words, so input.length/3 to get n tokens and add some more words just in case
   const data = {
     model: 'xlarge',
     prompt: prompt + `"${input}"
@@ -32,8 +30,6 @@ export async function enhanceText (input, length) {
     },
     body: JSON.stringify(data)
   }).then(res => res.json())
-
-  console.log(response)
 
   const { text } = response.generations[0]
   return text
