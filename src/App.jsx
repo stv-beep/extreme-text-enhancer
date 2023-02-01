@@ -32,7 +32,8 @@ function App () {
   const handleClick = async () => {
     setLoad(true)
     const text = input
-    promise = enhanceText(text)
+    const len = text.split(' ')
+    promise = enhanceText(text, len.length)
     const value = await promise
     setLoad(false)
     setEnhance(value)
@@ -77,15 +78,15 @@ function App () {
         <h1 className='text-5xl font-bold text-center'>Extreme text enhancer</h1>
         <h3 className='text-lg font-bold text-center'>Beautify and enhance your text as if it had been written by someone extremely cultured.</h3>
       </header>
-      <div className='flex flex-col gap-6'>
-        <textarea onInput={handleChange} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#0a0a0a] border border-gray-900 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='Write something in English, like: "I want to go to the Moon."' rows='2' data-min-rows='2' cols='40' autoFocus value={input} />
+      <div className='flex flex-col gap-4'>
+        <textarea onInput={handleChange} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I want to go to the Moon."' rows='2' data-min-rows='2' cols='40' autoFocus value={input} maxLength='400' />
 
         <textarea
-          id='result' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#100f0f] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='2' data-min-rows='2' cols='40' disabled
+          id='result' className='flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='5' data-min-rows='2' cols='40'
           value={enhanced}
         />
       </div>
-      <div className='flex flex-row gap-2'>
+      <div className='flex flex-row gap-2 my-4'>
         {!load
           ? (
             <button
@@ -101,14 +102,14 @@ function App () {
             </button>
             )}
         <button
-          onClick={copyText}
-          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300'
+          onClick={copyText} aria-label='Copy to clipboard'
+          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300' alt='Copy to clipboard'
         >
           <Clipboard />
         </button>
         <button
-          onClick={clearInput}
-          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300'
+          onClick={clearInput} aria-label='Clear the input'
+          type='button' className='py-2 rounded-lg hover:scale-125 transition-transform duration-300' alt='Clear the input'
         >
           <Clear />
         </button>
