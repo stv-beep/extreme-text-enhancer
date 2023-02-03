@@ -59,6 +59,7 @@ export default function Main () {
   const inputRef = useRef(null)
   const clearInput = () => {
     inputRef.current.value = ''
+    setDisabledBtn(false)
   }
 
   /* adaptative textarea */

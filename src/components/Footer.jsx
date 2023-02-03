@@ -2,7 +2,7 @@
 export default function Footer () {
   return (
     <footer className='flex border-t border-yellow-600'>
-      <div className='flex flex-col md:flex-row w-10/12 py-5 mx-auto justify-end text-zinc-200 gap-2'>
+      <div className='flex flex-row w-10/12 py-5 mx-auto justify-end text-zinc-200 gap-2'>
         <div className='flex gap-2'>
           <p>By</p>
           <a
