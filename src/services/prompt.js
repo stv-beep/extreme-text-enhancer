@@ -129,4 +129,10 @@ Enhanced: "I am in want of my belongings!"
 Normal: "Get that motivation to not give up, and not be a quitter."
 Enhanced: "Get that motivation to not succumb to slothfulness, and not become a reprobate."
 --
+Normal: "I will try my best."
+Enhanced: "I will exert myself to the utmost of my capabilities."
+--
+Normal: "I'll try until I can, ok? So shut up."
+Enhanced: "I shall persist in my efforts until such a time that I can achieve success, okay? So be quiet."
+--
 Normal: `
