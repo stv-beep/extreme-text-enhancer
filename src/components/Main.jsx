@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { enhanceText } from '../services/generate-text'
 import { checkLang } from '../services/check-lang'
 import LoadingIcons from 'react-loading-icons'
@@ -11,7 +11,8 @@ export default function Main () {
   const [input, setInput] = useState('')
   const [enhanced, setEnhance] = useState()
 
-  const minTextLength = 3
+  const minTextLength = 5
+  const debounceTime = 700
 
   const handleChange = async (event) => {
     const value = event.target.value
@@ -23,6 +24,17 @@ export default function Main () {
     }
     const isEnglish = await checkLang(value)
     setDisabledBtn(isEnglish)
+  }
+
+  /* debounced function to not request language checker each type in the textarea */
+  const debounceRef = useRef()
+  const onQueryChanged = (event) => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current)
+    }
+    debounceRef.current = setTimeout(() => {
+      handleChange(event)
+    }, debounceTime)
   }
 
   let promise = null
@@ -44,8 +56,9 @@ export default function Main () {
     }
   }
 
+  const inputRef = useRef(null)
   const clearInput = () => {
-    setInput('')
+    inputRef.current.value = ''
   }
 
   /* adaptative textarea */
@@ -79,7 +92,7 @@ export default function Main () {
   return (
     <div className='my-10'>
       <div className='flex flex-col gap-4'>
-        <textarea onInput={handleChange} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus value={input} maxLength='400' />
+        <textarea onChange={onQueryChanged} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus maxLength='400' ref={inputRef} />
 
         <textarea
           id='result' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='5' data-min-rows='2' cols='40' disabled
