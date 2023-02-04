@@ -4,6 +4,7 @@ import { checkLang } from '../services/check-lang'
 import LoadingIcons from 'react-loading-icons'
 import Copy from './Copy'
 import ClearInput from './ClearInput'
+import Blobs from '../assets/Blobs'
 
 export default function Main () {
   const [disabledBtn, setDisabledBtn] = useState(false)
@@ -91,16 +92,18 @@ export default function Main () {
   }
 
   return (
-    <div className='my-10'>
+    <div className='sm:my-10'>
+      <Blobs />
       <div className='flex flex-col gap-4'>
-        <textarea onChange={onQueryChanged} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus maxLength='400' ref={inputRef} />
+        <textarea onChange={onQueryChanged} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus maxLength='400' ref={inputRef} spellCheck='false' />
 
         <textarea
           id='result' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='At this shadowy receptacle will emerge the embellished wording...' rows='5' data-min-rows='2' cols='40' disabled
           value={enhanced}
         />
       </div>
-      <div className='flex flex-row gap-2 my-4'>
+      <div className='flex flex-row gap-2 my-4 relative'>
+        <div className='absolute -z-10 opacity-20 bg-cover bg-no-repeat blur-2xl paleBlob md:-right-[15%] md:-mt-24 s:top-10 s:right-10' />
         {!load
           ? (
             <button

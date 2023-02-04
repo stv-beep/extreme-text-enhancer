@@ -5,7 +5,13 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      screens: {
+        s: { max: '768px' },
+        xs: { max: '540px' },
+        xxs: { max: '400px' }
+      }
+    }
   },
   plugins: []
 }

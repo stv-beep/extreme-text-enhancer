@@ -8,9 +8,6 @@
 :root {
   font-family: 'Special Elite', cursive;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-image: url('./assets/bg.webp');
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,6 +21,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url('./assets/bg.webp');
 }
 
 footer { 
@@ -39,4 +37,27 @@ footer {
     bottom: 0;
     position: relative;
   }
+}
+
+/* Blobs */
+.blobTopLeft {
+  width: 300px;
+  height: 350px;
+  background-image: url("data:image/svg+xml,%3Csvg id='10015.io' viewBox='0 0 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' %3E%3Cpath fill='%23fff147' d='M386.5,306.5Q346,373,273,394.5Q200,416,122.5,375Q45,334,66,250Q87,166,140,100Q193,34,270,70Q347,106,387,173Q427,240,386.5,306.5Z' /%3E%3C/svg%3E");
+}
+.blobTopRight {
+  width: 200px;
+  height: 350px;
+  background-image: url("data:image/svg+xml,%3Csvg id='10015.io' viewBox='0 0 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' %3E%3Cpath fill='%23f6e206' d='M423.5,280Q406,320,380,351.5Q354,383,320.5,414Q287,445,240,446Q193,447,165,408Q137,369,81.5,356Q26,343,65.5,291.5Q105,240,122,215.5Q139,191,130,140.5Q121,90,162.5,86Q204,82,244,65.5Q284,49,314,79Q344,109,366.5,138.5Q389,168,415,204Q441,240,423.5,280Z' /%3E%3C/svg%3E");
+}
+.blobBottomLeft {
+  width: 300px;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg id='10015.io' viewBox='0 0 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' %3E%3Cpath fill='%23cab903' d='M399.5,282Q401,324,367.5,350.5Q334,377,299.5,410.5Q265,444,214.5,442Q164,440,152.5,384Q141,328,99.5,306.5Q58,285,47,237.5Q36,190,85.5,168.5Q135,147,169.5,146.5Q204,146,231,120Q258,94,297.5,96.5Q337,99,379,122Q421,145,409.5,192.5Q398,240,399.5,282Z' /%3E%3C/svg%3E");
+}
+
+.paleBlob {
+  width: 300px;
+  height: 200px;
+  background-image: url("data:image/svg+xml,%3Csvg id='10015.io' viewBox='0 0 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' %3E%3Cpath fill='%23fdf6af' d='M433.5,289.5Q411,339,369,364.5Q327,390,283.5,431Q240,472,186,449.5Q132,427,95,386Q58,345,32.5,292.5Q7,240,25,183Q43,126,87.5,89.5Q132,53,186,51Q240,49,299,42Q358,35,373.5,94.5Q389,154,422.5,197Q456,240,433.5,289.5Z' /%3E%3C/svg%3E");
 }
