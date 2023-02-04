@@ -105,7 +105,7 @@ export default function Main () {
           ? (
             <button
               disabled={!disabledBtn}
-              onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-400 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-2xl xl:text-xl lg:text-lg md:text-md w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
+              onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-400 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
             >Enhance my text!
             </button>
             )
