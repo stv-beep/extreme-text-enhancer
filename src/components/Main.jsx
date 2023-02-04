@@ -11,6 +11,7 @@ export default function Main () {
   const [load, setLoad] = useState(false)
   const [input, setInput] = useState('')
   const [enhanced, setEnhance] = useState()
+  const [copied, setCopied] = useState(false)
 
   const minTextLength = 5
   const debounceTime = 500
@@ -54,6 +55,10 @@ export default function Main () {
     const value = enhanced
     if (value !== undefined) {
       await navigator.clipboard.writeText(value)
+      setCopied(true)
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
     }
   }
 
@@ -119,7 +124,7 @@ export default function Main () {
               <Loading />
             </button>
             )}
-        <Copy onClick={copyText} />
+        <Copy onClick={copyText} copied={copied} />
         <ClearInput onClick={clearInput} />
       </div>
     </div>
