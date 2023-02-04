@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
 import { enhanceText } from '../services/generate-text'
 import { checkLang } from '../services/check-lang'
-import LoadingIcons from 'react-loading-icons'
 import Copy from './Copy'
 import ClearInput from './ClearInput'
 import Blobs from '../assets/Blobs'
+import Loading from '../assets/Loading'
 
 export default function Main () {
   const [disabledBtn, setDisabledBtn] = useState(false)
@@ -13,7 +13,7 @@ export default function Main () {
   const [enhanced, setEnhance] = useState()
 
   const minTextLength = 5
-  const debounceTime = 700
+  const debounceTime = 500
 
   const handleChange = async (event) => {
     const value = event.target.value
@@ -115,7 +115,8 @@ export default function Main () {
           : (
             <button
               disabled type='button' className={`py-2 px-4 flex justify-center items-center bg-[#ffff03] focus:ring-offset-black text-black lg:text-2xl md:text-md w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
-            ><LoadingIcons.Bars stroke='#ffff03' fill='#000' height='35px' />
+            >
+              <Loading />
             </button>
             )}
         <Copy onClick={copyText} />
