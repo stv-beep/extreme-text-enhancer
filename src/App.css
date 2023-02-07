@@ -24,17 +24,21 @@ body {
   background-image: url('./assets/bg.webp');
 }
 
-footer { 
-  position: absolute; 
-  bottom: 0; 
-  right: 0; 
-  left: 0; 
-  height:auto;
+@media screen and (min-height: 900px) {
+  footer { 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    left: 0; 
+    height:auto;
+  }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 799px) {
   footer { 
     bottom: 0;
+    right: 0; 
+    left: 0; 
     position: relative;
   }
 }

@@ -5,7 +5,7 @@ export default function Footer () {
       <div className='flex flex-col md:flex-row w-[80%] py-5 mx-auto justify-center sm:justify-center gap-2'>
         <div className='flex gap-2'>
           <p>By</p>
-          <a className='underline hover:text-[#ede728]' href='https://github.com/stv-beep' rel='noreferrer' target='_blank'>
+          <a className='underline hover:text-[#ede728]' href='https://aleixalguero.vercel.app' rel='noreferrer' target='_blank'>
             Aleix Algueró
           </a>
         </div>

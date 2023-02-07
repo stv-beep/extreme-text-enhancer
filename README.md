@@ -1,7 +1,7 @@
 # Extreme text enhancer
 
-#### Beautify and enhance your text as if it had been written by someone extremely cultured. 
-![](https://aleixalguero.vercel.app/static/media/textenhancer.1733da1968e67e682d1e.png)
+#### Beautify and enhance your text as if it had been written by someone very formal and cultured.
+![](https://aleixalguero.vercel.app/static/media/textenhancer.a0cc6ef1ecc4db77860c.png)
 For example:
 - Normal sentence: `I like the chocolate.`
 - Enhanced sentence: `I am fond of the confectionery known as chocolate.`
@@ -19,12 +19,17 @@ Keep in mind that as an AI, sometimes takes more time than usual and it can fail
 - co:here AI
 - Vercel
 
-## Development
+## Getting started
+<hr>
+
+### Development
 `npm install`
 
 `npm run dev`
 
-## Production
+#### Create a .env file in the root and add:
+`VITE_COHERE_API_KEY=`
+### Production
 `npm run build`
 
 `npm run preview`
