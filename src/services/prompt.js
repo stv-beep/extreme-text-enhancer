@@ -16,7 +16,7 @@ Normal: "I saw the news on the TV and I was very scared of that."
 Enhanced: "I was aghast at the news I saw on the TV."
 --
 Normal: "I think that the transistor was the best invention in the human history."
-Enhanced: "It is my conviction that the transistor was one of the most momentous inventions in the history of humankind."
+Enhanced: "It is my conviction that the transistor was the most revolutionary breakthrough in the history of humankind."
 --
 Normal: "I've never liked maths in school."
 Enhanced: "I've always been disinterested in the subject of mathematics throughout my schooling."
@@ -45,7 +45,7 @@ Enhanced: "I was completely inebriated and thus bereft of reason; there is no wa
 Normal: "He was running for his life."
 Enhanced: "He was fleeing for his life."
 --
-Normal: "The wall of the building was painted blue in few years ago."
+Normal: "The wall of the building was painted blue a few years ago."
 Enhanced: "Several years prior, the wall of the edifice was cladded in azure colouration."
 --
 Normal: "George said he knows about pencils."
@@ -135,4 +135,44 @@ Enhanced: "I will exert myself to the utmost of my capabilities."
 Normal: "I'll try until I can, ok? So shut up."
 Enhanced: "I shall persist in my efforts until such a time that I can achieve success, okay? So be quiet."
 --
+Normal: "We are accounted poor citizens, the patricians good."
+Enhanced: "We are paupers, the aristocrats are good."
+--
+Normal: "Before we proceed any further, hear me speak."
+Enhanced: "Hearken unto me, as you value our continued discourse."
+--
+Normal: "Life's a game, but is not fair."
+Enhanced: "It is my lamentable deficiency of knowledge regarding the fairness of life, no surprise."
+--
+Normal: "I break the rules so I don't care."
+Enhanced: "I transgress the regulations so I do not take heed."
+--
+Normal: "Midudev is probably the best streamer of software development."
+Enhanced: "Midudev is doubtlessly the most prominent figure in the field of software development."
+--
 Normal: `
+
+export const samples = [
+  { input: "I'll try until I can, ok? So shut up." },
+  { input: 'I will try my best.' },
+  { input: 'Some people say that the Earth is flat. Can you believe that...' },
+  { input: 'I think that the transistor was the best invention in the human history.' },
+  { input: 'Get that motivation to not give up, and not be a quitter.' },
+  { input: "I've never liked maths in school." },
+  { input: 'Get that motivation to not give up, and not be a quitter.' },
+  { input: "Give me back what's mine!" },
+  { input: "I don't know who to trust, no surprise." },
+  { input: 'Sleep deprivation causes all sorts of challenges and problems.' },
+  { input: 'True, I understand, I make you look bad in your hometown.' },
+  { input: 'You got no money, you got no fame.' },
+  { input: "I break the rules so I don't care." },
+  { input: "Life's a game, but is not fair." },
+  { input: 'I am very tired.' },
+  { input: 'Can you save my soul?' },
+  { input: "Don't hate the player, hate the game." },
+  { input: "I don't even know you." },
+  { input: 'Midudev is probably the best streamer of software development.' },
+  { input: 'That guy threw the dog on the floor and all the people that were there were yelling at him.' },
+  { input: 'You told me a promise that never came.' },
+  { input: 'I was too drunk to say something with sense.' }
+]

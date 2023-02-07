@@ -5,6 +5,8 @@ import Copy from './Copy'
 import ClearInput from './ClearInput'
 import Blobs from '../assets/Blobs'
 import Loading from '../assets/Loading'
+import { samples } from '../services/prompt'
+import RandomDice from '../assets/RandomDice'
 
 export default function Main () {
   const [disabledBtn, setDisabledBtn] = useState(false)
@@ -14,7 +16,7 @@ export default function Main () {
   const [copied, setCopied] = useState(false)
 
   const minTextLength = 5
-  const debounceTime = 500
+  const debounceTime = 300
 
   const handleChange = async (event) => {
     const value = event.target.value
@@ -96,10 +98,22 @@ export default function Main () {
     }
   }
 
+  const getRandomInput = () => {
+    const num = Math.floor(Math.random() * (samples.length))
+    setInput(samples[num].input)
+    inputRef.current.value = samples[num].input
+    setDisabledBtn(true)
+    return samples[num].input
+  }
+
   return (
     <div className='sm:my-10'>
       <Blobs />
       <div className='flex flex-col gap-4'>
+        <h3 className='text-lg font-bold text-center bg-clip-text text-transparent bg-gradient-to-t text-[#fdfda1]'>If you don't feel inspired today, we can provide you a random input sentence. Just for test.</h3>
+
+        <button type='button' className='py-2 px-4 flex justify-center items-center bg-yellow-100 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg' onClick={getRandomInput}><RandomDice /> Random input <RandomDice /></button>
+
         <textarea onChange={onQueryChanged} onKeyDown={handleKeyDown} id='prompt' className='autoExpand flex-1 w-full px-4 py-2 xl:text-xl lg:text-lg md:text-md text-yellow-400 placeholder-[#ffffcc] bg-[#090909] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent resize-none' placeholder='Write something in English, like: "I like the chocolate."' rows='2' data-min-rows='2' cols='40' autoFocus maxLength='400' ref={inputRef} spellCheck='false' />
 
         <textarea
@@ -113,7 +127,7 @@ export default function Main () {
           ? (
             <button
               disabled={!disabledBtn}
-              onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-400 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
+              onClick={handleClick} type='button' className={`py-2 px-4 flex justify-center items-center bg-yellow-400 hover:bg-[#ffff03] hover:text-black focus:ring-yellow-500 focus:ring-offset-black text-black 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg w-full transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg  hover:scale-105 ${!disabledBtn ? 'pointer-events-none opacity-30' : ''}`}
             >Enhance my text!
             </button>
             )
