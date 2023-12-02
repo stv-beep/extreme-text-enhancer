@@ -1,15 +1,12 @@
-import cohere from 'cohere-ai'
 import { prompt } from './prompt'
 
 export const apikey = import.meta.env.VITE_COHERE_API_KEY
 const API_GENERATE_URL = 'https://api.cohere.ai/generate'
 
-cohere.init(apikey)
-
 export async function enhanceText (input, length) {
   const tokenLength = Math.floor(length / 3) + 30 // each token is about 3 words, so input.length/3 to get n tokens and add some more words just in case
   const data = {
-    model: 'xlarge',
+    model: 'command',
     prompt: prompt + `"${input}"
       Enhanced:`,
     max_tokens: tokenLength,
@@ -32,7 +29,15 @@ export async function enhanceText (input, length) {
   }).then(res => res.json())
 
   const { text } = response.generations[0]
-  return text
+
+  console.log(`Prediction: ${response.generations[0].text}`)
+
+  // fix to delete the last question provided by cohere when asks I you need help
+  const regex = /Would you like me to.*$/
+  const finalText = text.replace(regex, '')
+
+  console.log(finalText)
+  return finalText
     .replace('--', '')
     .replaceAll('"', '')
     .trim()

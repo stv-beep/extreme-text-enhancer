@@ -1,4 +1,4 @@
-export const prompt = `This is a language enhancer. Write the sentence improving the words to make it seem more educated.
+export const prompt = `This is a language enhancer. Write the sentence improving the words to make it seem more educated, polite and cultured.
 --
 Normal: "I'm a web developer, but I think web development is very hard."
 Enhanced: "I am a Web Developer, nevertheless, my opinion in this subject is that it is very arduous."

@@ -1,8 +1,5 @@
-import cohere from 'cohere-ai'
 import { apikey } from './generate-text'
 const API_DETECT_LANGUAGE_URL = 'https://api.cohere.ai/detect-language'
-
-cohere.init(apikey)
 
 export async function checkLang (input) {
   const data = {
