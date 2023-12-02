@@ -21,7 +21,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url('./assets/bg.webp');
+  background-image: url('./assets/bg.jpg');
 }
 
 @media screen and (min-height: 900px) {
