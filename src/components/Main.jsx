@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { enhanceText } from '../services/generate-text'
-import { checkLang } from '../services/check-lang'
 import Copy from './Copy'
 import ClearInput from './ClearInput'
 import Blobs from '../assets/Blobs'
@@ -22,12 +21,7 @@ export default function Main () {
     const value = event.target.value
     setInput(value)
     const isValid = value.length >= minTextLength
-    if (!isValid) {
-      setDisabledBtn(false)
-      return
-    }
-    const isEnglish = await checkLang(value)
-    setDisabledBtn(isEnglish)
+    !isValid ? setDisabledBtn(false) : setDisabledBtn(true)
   }
 
   /* debounced function to not request language checker each type in the textarea */
