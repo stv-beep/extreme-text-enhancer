@@ -1,14 +1,13 @@
 import { prompt } from './prompt'
 
 export const apikey = import.meta.env.VITE_COHERE_API_KEY
-const API_GENERATE_URL = 'https://api.cohere.ai/generate'
+const API_CHAT_URL = 'https://api.cohere.ai/v1/chat'
 
 export async function enhanceText (input, length) {
   const tokenLength = Math.floor(length / 3) + 30 // each token is about 3 words, so input.length/3 to get n tokens and add some more words just in case
   const data = {
-    model: 'command',
-    prompt: prompt + `"${input}"
-      Enhanced:`,
+    model: 'command-r-plus-08-2024',
+    message: `${prompt}"${input}"\nEnhanced:`,
     max_tokens: tokenLength,
     temperature: 0.6,
     k: 0,
@@ -18,7 +17,7 @@ export async function enhanceText (input, length) {
     stop_sequences: ['--'],
     return_likelihoods: 'NONE'
   }
-  const response = await fetch(API_GENERATE_URL, {
+  const response = await fetch(API_CHAT_URL, {
     method: 'POST',
     headers: {
       Authorization: `BEARER ${apikey}`,
@@ -28,17 +27,16 @@ export async function enhanceText (input, length) {
     body: JSON.stringify(data)
   }).then(res => res.json())
 
-  const { text } = response.generations[0]
+  const text = response?.text ?? ''
 
-  console.log(`Prediction: ${response.generations[0].text}`)
+  // console.log(response)
 
-  // fix to delete the last question provided by cohere when asks I you need help
-  const regex = /Would you like me to.*$/
-  const finalText = text.replace(regex, '')
-
-  console.log(finalText)
-  return finalText
+  // fix to delete the last question provided by cohere when asks I you need help and others
+  const finalText = text
+    .replace(/Would you like me to.*$/i, '')
     .replace('--', '')
     .replaceAll('"', '')
     .trim()
+
+  return finalText
 }
